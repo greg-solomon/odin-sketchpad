@@ -1,0 +1,22 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+#container{
+	width:720px;
+	height:720px;
+	position:absolute;
+	clear:both;
+	margin-top: 75px;
+	margin-left: 30%;
+	border:solid;
+	border-width: 1px;
+}
+#controls{
+	margin-top:25px;
+}
+.block {
+	display:inline-block;
+}
