@@ -63,7 +63,6 @@ function fadeColor(color){
 	
 	if (r == 0){
 		r = g = b = 255;
-		console.log(g)
 	} else if (r - 10 < 0){
 		r = g = b = 1;
 	} else {
