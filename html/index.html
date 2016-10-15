@@ -3,19 +3,24 @@
 	<script src="../js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="../js/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
-	<script>
-
-	</script>
-	<title>Odin Project -- JQuery/Javascript SketchPad</title>
+	<title>The Odin Project -- JQuery/Javascript SketchPad</title>
 </head>
 <body onload="draw()">
-	<div id="controls">
+	<div id="info">
 		<center>
-		<button onclick="cls()">Clear</button>
-		<button onclick="fade()">Fade</button>
-		<button onclick="randomize()">Random Colours</button>
+			<h1 class="heading">Etch-a-Sketch</h1>
+			<h4 class="heading">Move your mouse over the canvas to draw</h4>
+		</center>
 	</div>
 	<div id="container">
+	</div>
+	<div id="controls">
+		<center>
+		<button class="button" onclick="resize()">Resize Canvas</button>
+		<button class="button" onclick="cls()">Clear</button>
+		<button class="button" onclick="fade()">Fade</button>
+		<button class="button" onclick="randomize()">Random Colours</button>
+	</center>
 	</div>
 </body>
 </html>

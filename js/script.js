@@ -1,7 +1,8 @@
 // globals
 var randomFlag = false;
+var fadeFlag = false;
 var col = "rgb(0,0,0)";
-
+var size = 16
 function draw(size =16){
 	while(720 % size !== 0){
 		size -= 2;
@@ -20,19 +21,24 @@ function draw(size =16){
 		document.getElementById("container").appendChild(br)
 	}
 }
-
-function cls(){
+function resize(){
 	$('div.block').remove();
 	$('br.break').remove();
-	var size = prompt("How many squares per side?");
+	size = prompt("How many squares per side?");
 	if (size < 1){
 		size = 16;
 	}
 	draw(size);
 }
+function cls(){
+	$('div.block').remove();
+	$('br.break').remove();
+	draw(size);
+}
 
 function randomize(){
 	randomFlag = !randomFlag;
+	fadeFlag = false;
 }
 
 function randomColor(){
@@ -42,18 +48,45 @@ function randomColor(){
 	colour = "rgb("+String(r)+","+String(g)+","+String(b)+")";
 	return colour;
 }
-
+function fade(){
+	fadeFlag = !fadeFlag;
+	randomFlag = false;
+}
+function fadeColor(color){
+	colorString = color.substring(4,color.length);
+	colorString = colorString.replace("(","");
+	colorString = colorString.replace(")","");
+	colors = colorString.split(", ");
+	var r = parseInt(colors[0]);
+	var g = parseInt(colors[1]);
+	var b = parseInt(colors[2]);
+	
+	if (r == 0){
+		r = g = b = 255;
+		console.log(g)
+	} else if (r - 10 < 0){
+		r = g = b = 1;
+	} else {
+		r = g = b -= 10;
+	}
+	var col = "rgb("+String(r)+","+String(g)+","+String(b)+")";
+	//console.log("col: "+col);
+	return col;
+}
 $(document).ready(function(){
 	// colour's div's when mouse enters
 	$(document).on('mouseenter', '.block', function(){
 		if (randomFlag){
 			$(this).css({"background-color":randomColor()});
+		} else if (fadeFlag){
+			//fadeColor($(this).css("background-color"));
+			$(this).css({"background-color":fadeColor($(this).css("background-color"))});
 		} else {
 			$(this).css({"background-color":col});
 		}
-	
 	});
 	
 });
+
 
 
